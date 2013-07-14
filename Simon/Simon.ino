@@ -52,12 +52,12 @@ void setup() {
   if (debug) {
     Serial.begin(9600);
     Serial.println(); 
-    Serial.println("Game:          Simon");
-    Serial.println("Made by:       Jeff Thompson");
-    Serial.println("More info:     www.jeffreythompson.org");
-    Serial.print("Pattern length:  ");
+    Serial.println("Game:           Simon");
+    Serial.println("Made by:        Jeff Thompson");
+    Serial.println("More info:      www.jeffreythompson.org");
+    Serial.print("Pattern length: ");
     Serial.println(level);
-    Serial.print("Pattern mode:    ");
+    Serial.print("Pattern mode:   ");
     if (appendToPattern) Serial.print("append to previous");
     else Serial.print("new each level");
     Serial.println("\n");

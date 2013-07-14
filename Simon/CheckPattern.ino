@@ -15,7 +15,11 @@ void checkPattern() {
 
   // got it right? :)
   if (correct) {
-    if (debug) Serial.println("\nCORRECT!");
+    if (debug) {
+      Serial.println("\n\nCORRECT!");
+      Serial.print("Next level:     ");
+      Serial.println((level+1));
+    }
 
     if (level < maxLevel) {
       level++;                                          // increase the level
@@ -30,7 +34,7 @@ void checkPattern() {
 
   // got it wrong :(
   else {
-    if (debug) Serial.println("\nWRONG! :(");
+    if (debug) Serial.println("\n\nWRONG! :(");
     grumbleVibration();                          // let us know we got it wrong
     playPattern();                               // not right, play it again
   }

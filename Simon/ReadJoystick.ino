@@ -12,17 +12,17 @@ void readJoystick() {
 
     // right
     if (horiz < lowThresh) {
-      if (debug) Serial.println("RIGHT");   // print direction
-      checkIfRecording();                   // if not already recording, reset and start
-      response[index] = 1;                  // set response to direction # (1 = right, 2 = down, etc)
-      index++;                              // increment index
-      vibrate(rightMotor);                  // and vibrate so we know the direction has been saved
+      checkIfRecording();                     // if not already recording, reset and start
+      if (debug) Serial.print("  R");         // print direction
+      response[index] = 1;                    // set response to direction # (1 = right, 2 = down, etc)
+      index++;                                // increment index
+      vibrate(rightMotor);                    // and vibrate so we know the direction has been saved
     }
 
     // left
     else if (horiz > highThresh) {
-      if (debug) Serial.println("LEFT");
       checkIfRecording();
+      if (debug) Serial.print("  L");
       response[index] = 3;
       index++;
       vibrate(leftMotor);
@@ -30,8 +30,8 @@ void readJoystick() {
 
     // up
     if (vert > highThresh) {
-      if (debug) Serial.println("UP");
       checkIfRecording();
+      if (debug) Serial.print("  U");
       response[index] = 0;
       index++;
       vibrate(upMotor);
@@ -39,8 +39,8 @@ void readJoystick() {
 
     // down
     else if (vert < lowThresh) {
-      if (debug) Serial.println("DOWN");
       checkIfRecording();
+      if (debug) Serial.print("  D");
       response[index] = 2;
       index++;
       vibrate(downMotor);
@@ -50,11 +50,12 @@ void readJoystick() {
 
 void checkIfRecording() {
   if (!recording) {
-    recording = true;                            // changes button to 'confirm' as opposed to playback
-    index = 0;                                   // reset index to store response in
-    if (debug) Serial.println("Recording...");   // let us know
+    recording = true;                                // changes button to 'confirm' as opposed to playback
+    index = 0;                                       // reset index to store response in
+    if (debug) Serial.println("\nRecording...");     // let us know
   }
 }
+
 
 
 

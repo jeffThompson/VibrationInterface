@@ -5,7 +5,7 @@ void createLevel() {
   x = random(0,w);
   y = random(0,h);
   
-  // fill level with walls
+  // fill level
   for (int ty=0; ty<h; ty++) {
     for (int tx=0; tx<w; tx++) {
       level[ty][tx] = 0;
@@ -45,6 +45,3 @@ void createLevel() {
     }
   }
 }
-
-
-

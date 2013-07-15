@@ -1,52 +1,56 @@
 
 /*
-VIBRATION INTERFACE
+MESA
  Jeff Thompson | 2013 | www.jeffreythompson.org
+ 
+ The player walks around algorithmically-generated mesa. Move using the joystick,
+ feel around you by pushing the button: vibration means ground, no vibration means
+ we're at the edge.
  
  Created with generous support from Harvestworks' Cultural Innovation Fund program.
  
  For EagleCAD schematic/PCB files, lasercutting part files, and a BOM, see the 
  'LasercutPartsCADFiles' folder.
  
+ Python/Arduino serial based on this tutorial and code by Neil Gershenfeld:
+ http://web.media.mit.edu/~liningy/sub_work/lining.yao/design%20about/Tutorial_2.html
+ 
  TO DO - PROGRAMMING:
- + is it mesa where you're feeling the edges of the abyss? touch them and die, so feel around?
  + instructions how?
- + test level sizes and performance
  + can serial debug be a secret that launches when plugged in? can it launch the terminal?
- + set tile height? hook up LED
 
  */
 
-
-const boolean debug = true;    // debug over serial USB?
+const boolean debug = true;     // debug over serial USB?
+const int visionDistance = 2;   // if printing, how far can we see?
 
 // pins
-const int horizPin = A1;       // horizontal joystick
-const int vertPin = A0;        // vertical
-const int buttonPin = 7;       // button from joystick
-const int ledPin = 11;         // LED (must be a PWM pin)
+const int horizPin = A1;        // horizontal joystick
+const int vertPin = A0;         // vertical
+const int buttonPin = 7;        // button from joystick
+const int ledPin = 11;          // LED (must be a PWM pin)
 
-const int upMotor = 10;        // motor pins
+const int upMotor = 10;         // motor pins
 const int rightMotor = 5;
 const int downMotor = 6;
 const int leftMotor = 9;
 
 // threshold for joystick
-int lowThresh = 512-450;       // 512 = 1024/2
+int lowThresh = 512-450;        // 512 = 1024/2
 int highThresh = 512+450;
 
-// level array ( set dynamically in setup)
+// level array (set dynamically in setup)
 const int w = 28;               // level dimensions
 const int h = 28;
-const int numSteps = 80;        // # of steps to create the level
+const int numSteps = 700;       // # of steps to create the level
 const int baseHeight = 20;      // starting tile height
 const int heightInc = 2;        // +inc when traversing a tile
 int level[h][w];                // the level itself!
 
 // vibration variables
-int neighborVibeTime = 250;    // time motors are on in ms 
-int neighborOffTime = 40;      // time off between directions
-int wallVibe[] = {             // wall hit pattern
+int neighborVibeTime = 250;     // time motors are on in ms 
+int neighborOffTime = 40;       // time off between directions
+int wallVibe[] = {              // wall hit pattern
   40, 30, 80, 30, 40 };
 
 // other variables
@@ -92,6 +96,3 @@ void loop() {
   // LED to current terrain height
   analogWrite(ledPin, map(level[y][x], 0,255, 0,50));
 }
-
-
-

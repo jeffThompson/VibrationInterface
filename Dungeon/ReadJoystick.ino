@@ -15,5 +15,3 @@ void readJoystick() {
   // alternative if statement that allows continuous movement
   // if ((prevHoriz > lowThresh && prevHoriz < highThresh) || (prevVert > lowThresh && prevVert < highThresh)) {
 }
-
-

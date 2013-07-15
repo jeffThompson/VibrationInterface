@@ -7,13 +7,8 @@ void movePlayer() {
     if (x > w-1) x = 0;
 
     if (level[y][x] == 0) {
-      hitWall(rightMotor);
-      if (x-1 < 0) {
-        x = w-1;
-      }
-      else {
-        x -= 1;
-      }
+      fallVibration(rightMotor);
+      setup();
     }
     else {
       stepVibration(rightMotor);
@@ -27,13 +22,8 @@ void movePlayer() {
     if (x < 0) x = w-1;
 
     if (level[y][x] == 0) {
-      hitWall(leftMotor);
-      if (x+1 > w-1) {
-        x = 0;
-      }
-      else {
-        x += 1;
-      }
+      fallVibration(leftMotor);
+      setup();
     }
     else {
       stepVibration(leftMotor);
@@ -47,13 +37,8 @@ void movePlayer() {
     if (y < 0) y = h-1;
 
     if (level[y][x] == 0) {
-      hitWall(upMotor);
-      if (y+1 > h-1) {
-        y = 0;
-      }
-      else {
-        y += 1;
-      }
+      fallVibration(upMotor);
+      setup();
     }
     else {
       stepVibration(upMotor);
@@ -67,13 +52,8 @@ void movePlayer() {
     if (y > h-1) y = 0;
 
     if (level[y][x] == 0) {
-      hitWall(downMotor);
-      if (y-1 < 0) {
-        y = h-1;
-      }
-      else {
-        y -= 1;
-      }
+      fallVibration(downMotor);
+      setup();
     }
     else {
       stepVibration(downMotor);
@@ -81,7 +61,5 @@ void movePlayer() {
     }
   }
 }
-
-
 
 

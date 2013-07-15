@@ -20,6 +20,4 @@ void resetPlayerLocation() {
     Serial.print(y);
     Serial.print("\n\n");
   }
-}  
-
-
+}

@@ -1,4 +1,4 @@
-![PCB](https://raw.github.com/jeffThompson/VibrationInterface/master/ProcessPhotos/Board_v0.9Top.png)
+![PCB](https://raw.github.com/jeffThompson/VibrationInterface/master/ProcessPhotos/PCB_Top.png)
 
 Vibration Interface
 ==================
